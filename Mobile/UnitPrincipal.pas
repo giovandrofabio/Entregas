@@ -62,6 +62,7 @@ type
     procedure imgAba1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     imgAbaSelecionada: TImage;
     procedure SelecionarAba(img: TImage);
@@ -109,6 +110,8 @@ end;
 
 procedure TFrmPrincipal.ThreadRemessasTerminate(Sender: TObject);
 begin
+   lvRemessa.EndUpdate;
+
    if ErroThread(Sender) then
       Exit;
 end;
@@ -123,7 +126,7 @@ begin
    t := TThread.CreateAnonymousThread(procedure
    begin
       //Acessar a API em busca das remessas...
-      sleep();
+      sleep(1500);
 
       AddRemessa(0, 'P', 'Entrega de Flores', 'Av. Paulista, 500 - CJ 60', 20);
       AddRemessa(0, 'P', 'Entrega de Documentos', 'Av. Ipiranga, 1000', 19.90);
@@ -157,6 +160,11 @@ begin
       rectAbaSelecao.Position.X := imgAbaSelecionada.Position.X;
       rectAbaSelecao.Width      := imgAbaSelecionada.Width;
    end;
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+  ListarMinhasRemessas;
 end;
 
 procedure TFrmPrincipal.imgAba1Click(Sender: TObject);

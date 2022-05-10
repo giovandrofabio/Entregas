@@ -3,7 +3,8 @@ program Entregas;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  UnitPrincipal in 'UnitPrincipal.pas' {FrmPrincipal};
+  UnitPrincipal in 'UnitPrincipal.pas' {FrmPrincipal},
+  uFunctions in 'Units\uFunctions.pas';
 
 {$R *.res}
 
