@@ -4,7 +4,8 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   UnitPrincipal in 'UnitPrincipal.pas' {FrmPrincipal},
-  uFunctions in 'Units\uFunctions.pas';
+  uFunctions in 'Units\uFunctions.pas',
+  uLoading in 'Units\uLoading.pas';
 
 {$R *.res}
 
