@@ -23,6 +23,7 @@ uses
   FMX.Controls.Presentation,
   FMX.StdCtrls,
   FMX.Ani,
+  FMX.DialogService,
   uFunctions,
   uLoading;
 
@@ -64,6 +65,13 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ImgAddClick(Sender: TObject);
+    procedure lvRemessaItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure lvEntregaItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
+    procedure lvHistoricoItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
   private
     imgAbaSelecionada: TImage;
     procedure SelecionarAba(img: TImage);
@@ -88,6 +96,9 @@ var
   FrmPrincipal: TFrmPrincipal;
 
 implementation
+
+uses
+  UnitNovaRemessa, UnitStatusRemessa;
 
 {$R *.fmx}
 
@@ -204,6 +215,39 @@ begin
    t.Start;
 end;
 
+procedure TFrmPrincipal.lvEntregaItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+   TDialogService.MessageDialog('Confirma a solicitação de coleta?',
+                                TMsgDlgType.mtConfirmation,
+                                [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+                                TMsgDlgBtn.mbNo,
+                                0,
+                                procedure(const AResult: TModalResult)
+                                begin
+                                   if AResult = mrYes then
+                                      showmessage('Reserva a Entrega');
+                                end);
+end;
+
+procedure TFrmPrincipal.lvHistoricoItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+   if not Assigned(FrmStatusRemessa) then
+      Application.CreateForm(TFrmStatusRemessa, FrmStatusRemessa);
+
+   FrmStatusRemessa.Show;
+end;
+
+procedure TFrmPrincipal.lvRemessaItemClick(const Sender: TObject;
+  const AItem: TListViewItem);
+begin
+   if not Assigned(FrmNovaRemessa) then
+      Application.CreateForm(TFrmNovaRemessa, FrmNovaRemessa);
+
+   FrmNovaRemessa.Show;
+end;
+
 procedure TFrmPrincipal.ThreadEntregasTerminate(Sender: TObject);
 begin
    TLoading.Hide;
@@ -274,7 +318,7 @@ begin
       begin
          AddHistorico(0,1,'P','10/05/2022 08:15','Entrega da Contabilidade',
                       'Rua Indiana, 482','Av. Interlagos, 6541', 55);
-         AddHistorico(0,1,'P','10/05/2022 08:15','Entrega de Projetos',
+         AddHistorico(0,1,'F','10/05/2022 08:15','Entrega de Projetos',
                       'Av. 23 de maio, 5411','Rua Sabiá, 258', 21);
       end);
    end);
@@ -321,6 +365,14 @@ end;
 procedure TFrmPrincipal.imgAba1Click(Sender: TObject);
 begin
    SelecionarAba(TImage(Sender));
+end;
+
+procedure TFrmPrincipal.ImgAddClick(Sender: TObject);
+begin
+   if not Assigned(FrmNovaRemessa) then
+      Application.CreateForm(TFrmNovaRemessa, FrmNovaRemessa);
+
+   FrmNovaRemessa.Show;
 end;
 
 end.

@@ -4,11 +4,17 @@
     <Transaction>2022/05/01 08:59:03.000.172,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2022/05/09 16:13:30.000.443,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2022/05/09 16:14:37.000.862,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2022/05/09 16:42:37.000.271,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitPrincipal.pas</Transaction>
-    <Transaction>2022/05/09 16:42:37.000.285,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitPrincipal.fmx</Transaction>
-    <Transaction>2022/05/09 16:42:51.000.988,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Entregas.dproj</Transaction>
+    <Transaction>2022/05/09 16:42:37.000.271,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitPrincipal.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/05/09 16:42:37.000.285,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitPrincipal.fmx=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2022/05/09 16:42:51.000.988,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Entregas.dproj=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
     <Transaction>2022/05/10 09:03:31.000.967,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Units\uFunctions.pas</Transaction>
-    <Transaction>2022/05/10 14:41:26.874,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Units\uLoading.pas</Transaction>
+    <Transaction>2022/05/10 14:41:26.000.874,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Units\uLoading.pas</Transaction>
+    <Transaction>2022/05/11 15:12:53.514,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Unit1.pas</Transaction>
+    <Transaction>2022/05/11 15:21:13.656,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitNovaRemessa.fmx=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Unit1.fmx</Transaction>
+    <Transaction>2022/05/11 15:21:13.656,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitNovaRemessa.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Unit1.pas</Transaction>
+    <Transaction>2022/05/11 16:33:19.679,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Unit1.pas</Transaction>
+    <Transaction>2022/05/11 16:34:22.413,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitStatusRemessa.fmx=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Unit1.fmx</Transaction>
+    <Transaction>2022/05/11 16:34:22.413,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\UnitStatusRemessa.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\Mobile\Unit1.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<NoProfile iOSSimulator="iPhone5"/>
