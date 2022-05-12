@@ -1,0 +1,53 @@
+unit DataModule.Global;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+
+  Data.DB,
+
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Phys.SQLite,
+  FireDAC.Phys.SQLiteDef,
+  FireDAC.Stan.ExprFuncs,
+  FireDAC.FMXUI.Wait,
+  FireDAC.Comp.Client;
+
+type
+  TDmGlobal = class(TDataModule)
+    conn: TFDConnection;
+  private
+    { Private declarations }
+  public
+   procedure ConectarBanco;
+    { Public declarations }
+  end;
+
+var
+  DmGlobal: TDmGlobal;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDmGlobal.ConectarBanco;
+var
+  ini: TIniFile;
+  arquivo_ini: string;
+begin
+
+end;
+
+end.
