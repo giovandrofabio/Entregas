@@ -146,8 +146,8 @@ begin
          Active := False;
          SQL.Clear;
          SQL.Add('SELECT * FROM REMESSA');
-         SQL.Add('WHERE (ID_USUARIO <> :ID_USUARIO OR ID_ENTREGADOR = :ID_ENTREGADOR)');
-         SQL.Add('AND STATUS IN (''E'',''F'')');
+         SQL.Add('WHERE (ID_USUARIO = :ID_USUARIO OR ID_ENTREGADOR = :ID_ENTREGADOR)');
+         SQL.Add('AND STATUS IN (''E'', ''F'')');
          SQL.Add('ORDER BY ID_REMESSA DESC');
 
          ParamByName('ID_USUARIO').Value    := ID_USUARIO;

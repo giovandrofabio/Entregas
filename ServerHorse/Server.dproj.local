@@ -3,15 +3,19 @@
 	<Transactions>
     <Transaction>2022/05/01 08:59:03.000.172,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2022/05/09 16:13:30.000.443,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2022/05/12 07:06:37.858,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2022/05/12 07:12:02.381,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\UnitPrincipal.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2022/05/12 07:12:02.381,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\UnitPrincipal.fmx=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
-    <Transaction>2022/05/12 07:12:53.894,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Server.dproj=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2022/05/12 07:16:20.559,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
-    <Transaction>2022/05/12 07:22:18.130,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\DataModule\DataModule.Global.dfm=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.dfm</Transaction>
-    <Transaction>2022/05/12 07:22:18.130,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\DataModule\DataModule.Global.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
-    <Transaction>2022/05/12 10:48:16.280,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
-    <Transaction>2022/05/12 10:49:12.971,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\DAO\DAO.Remessa.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
-  </Transactions>  <ActiveMobileDevice>   <NoProfile iOSSimulator="iPhone5"/>
-  </ActiveMobileDevice>
+    <Transaction>2022/05/12 07:06:37.000.858,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/05/12 07:12:02.000.381,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\UnitPrincipal.pas</Transaction>
+    <Transaction>2022/05/12 07:12:02.000.381,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\UnitPrincipal.fmx</Transaction>
+    <Transaction>2022/05/12 07:12:53.000.894,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Server.dproj</Transaction>
+    <Transaction>2022/05/12 07:16:20.000.559,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
+    <Transaction>2022/05/12 07:22:18.000.130,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\DataModule\DataModule.Global.pas</Transaction>
+    <Transaction>2022/05/12 07:22:18.000.130,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.dfm=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\DataModule\DataModule.Global.dfm</Transaction>
+    <Transaction>2022/05/12 10:48:16.000.280,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
+    <Transaction>2022/05/12 10:49:12.000.971,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\DAO\DAO.Remessa.pas</Transaction>
+    <Transaction>2022/05/12 20:25:59.498,=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
+    <Transaction>2022/05/12 20:26:57.999,C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Controller\Controllers.Remessa.pas=C:\Users\Giovandro\Documents\Embarcadero\Studio\Projects\Entregas\ServerHorse\Unit1.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
 </BorlandProject>

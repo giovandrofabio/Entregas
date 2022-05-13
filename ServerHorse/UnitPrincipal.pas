@@ -28,7 +28,8 @@ uses
   Horse.BasicAuthentication,
   Horse.Jhonson,
   Horse.CORS,
-  DataSet.Serialize.Config;
+  DataSet.Serialize.Config,
+  Controllers.Remessa;
 
 {$R *.fmx}
 
@@ -53,6 +54,9 @@ begin
    except on ex:exception do
       memo.Lines.Add('Erro: ' + ex.Message);
    end;
+
+   //Registrar as rotas...
+   Controllers.Remessa.RegistrarRotas;
 
    //Subir a aplicação...
    THorse.Listen(3000, procedure (Hose: THorse)
