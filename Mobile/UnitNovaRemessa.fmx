@@ -9,6 +9,8 @@ object FrmNovaRemessa: TFrmNovaRemessa
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnShow = FormShow
   DesignerMasterStyle = 3
   object rectToolbar1: TRectangle
     Align = Top
@@ -18,7 +20,7 @@ object FrmNovaRemessa: TFrmNovaRemessa
     Size.Height = 57.000000000000000000
     Size.PlatformDefault = False
     Stroke.Color = xFFEDEDED
-    object Label1: TLabel
+    object lblTitulo: TLabel
       Align = Contents
       StyledSettings = [Family, FontColor]
       Size.Width = 360.000000000000000000
@@ -206,5 +208,6 @@ object FrmNovaRemessa: TFrmNovaRemessa
     Size.Width = 360.000000000000000000
     Size.Height = 60.000000000000000000
     Size.PlatformDefault = False
+    OnClick = imgDeleteClick
   end
 end

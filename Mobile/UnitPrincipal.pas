@@ -25,7 +25,8 @@ uses
   FMX.Ani,
   FMX.DialogService,
   uFunctions,
-  uLoading;
+  uLoading,
+  uSession;
 
 type
   TFrmPrincipal = class(TForm)
@@ -46,11 +47,11 @@ type
     Rectangle1: TRectangle;
     Label2: TLabel;
     Image5: TImage;
-    Image6: TImage;
+    imgRefreshEntrega: TImage;
     Rectangle2: TRectangle;
     Label3: TLabel;
     Image7: TImage;
-    Image8: TImage;
+    imgRefreshHistorico: TImage;
     imgBolaAmarela: TImage;
     imgBolaCinza: TImage;
     imgFundoValor: TImage;
@@ -72,6 +73,8 @@ type
       const AItem: TListViewItem);
     procedure lvHistoricoItemClick(const Sender: TObject;
       const AItem: TListViewItem);
+    procedure imgRefreshEntregaClick(Sender: TObject);
+    procedure imgRefreshHistoricoClick(Sender: TObject);
   private
     imgAbaSelecionada: TImage;
     procedure SelecionarAba(img: TImage);
@@ -87,6 +90,8 @@ type
     procedure ThreadEntregasTerminate(Sender: TObject);
     procedure ListarHistorico;
     procedure ThreadHistoricoTerminate(Sender: TObject);
+    procedure ConfirmarColeta(id_remessa: Integer);
+    procedure ThreadColetaTerminate(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -98,7 +103,7 @@ var
 implementation
 
 uses
-  UnitNovaRemessa, UnitStatusRemessa;
+  UnitNovaRemessa, UnitStatusRemessa, DataModule.Remessa;
 
 {$R *.fmx}
 
@@ -199,19 +204,54 @@ begin
 
    t := TThread.CreateAnonymousThread(procedure
    begin
-      //Acessar a API em busca das remessas...
-      sleep(1500);
+      DmRemessa.ListarMinhasRemessas(TSession.ID_USUARIO);
 
-      TThread.Synchronize(TThread.CurrentThread, procedure
+      with DmRemessa.TabRemessas do
       begin
-        AddRemessa(0, 'P', 'Entrega de Flores', 'Av. Paulista, 500 - CJ 60', 20);
-        AddRemessa(0, 'E', 'Entrega de Documentos', 'Av. Ipiranga, 1000', 19.90);
-        AddRemessa(0, 'E', 'Entrega de Contabilidade', 'Av. Paulista, 500 - CJ 60', 25);
-        AddRemessa(0, 'P', 'Entrega de Peças', 'Av. Paulista, 500 - CJ 60', 30);
-      end);
+         while not Eof do
+         begin
+            TThread.Synchronize(TThread.CurrentThread, procedure
+            begin
+               AddRemessa(FieldByName('id_remessa').AsInteger,
+                          FieldByName('status').AsString,
+                          FieldByName('descricao').AsString,
+                          FieldByName('destino').AsString,
+                          FieldByName('valor').AsFloat);
+            end);
+            Next;
+         end;
+      end;
    end);
 
    t.OnTerminate := ThreadRemessasTerminate;
+   t.Start;
+end;
+
+procedure TFrmPrincipal.ThreadColetaTerminate(Sender: TObject);
+begin
+   TLoading.Hide;
+
+   if ErroThread(Sender) then
+      Exit;
+
+   ListarEntregasDisponiveis;
+end;
+
+
+procedure TFrmPrincipal.ConfirmarColeta(id_remessa: Integer);
+var
+   t : TThread;
+begin
+   TLoading.Show(FrmPrincipal, '');
+
+   t := TThread.CreateAnonymousThread(procedure
+   begin
+      sleep(1000);
+
+      DmRemessa.ColetarRemessa(Id_Remessa, TSession.ID_USUARIO);
+   end);
+
+   t.OnTerminate := ThreadColetaTerminate;
    t.Start;
 end;
 
@@ -226,7 +266,7 @@ begin
                                 procedure(const AResult: TModalResult)
                                 begin
                                    if AResult = mrYes then
-                                      showmessage('Reserva a Entrega');
+                                      ConfirmarColeta(AItem.Tag);
                                 end);
 end;
 
@@ -236,6 +276,8 @@ begin
    if not Assigned(FrmStatusRemessa) then
       Application.CreateForm(TFrmStatusRemessa, FrmStatusRemessa);
 
+   FrmStatusRemessa.ExecuteOnClose := ListarHistorico;
+   FrmStatusRemessa.Id_Remessa     := AItem.Tag;
    FrmStatusRemessa.Show;
 end;
 
@@ -245,6 +287,8 @@ begin
    if not Assigned(FrmNovaRemessa) then
       Application.CreateForm(TFrmNovaRemessa, FrmNovaRemessa);
 
+   FrmNovaRemessa.Id_Remessa     := AItem.Tag;
+   FrmNovaRemessa.ExecuteOnClose := ListarMinhasRemessas;
    FrmNovaRemessa.Show;
 end;
 
@@ -270,17 +314,24 @@ begin
       i : Integer;
    begin
       //Acessar a API em busca das remessas...
-      sleep(2500);
+      DmRemessa.ListarEntregasDisponiveis(TSession.ID_USUARIO);
 
       //Buscar entregas no servidor
-
-      TThread.Synchronize(TThread.CurrentThread, procedure
+      with DmRemessa.TabRemessas do
       begin
-         AddEntrega(0,'Entrega de Flores','Av. Paulista, 8000','Av. Ipiranga, 1500',40);
-         AddEntrega(0,'Entrega de documentos','Rua Libano, 100','Av. do Estado, 600',60);
-         AddEntrega(0,'Entrega de processos','Rua 13 de maio, 60','Av. Tiradentes, 456',14.90);
-         AddEntrega(0,'Entrega de pacotes','Av. Rubem Berta, 250','Rua dos Passaros, 300',30);
-      end);
+         while not Eof do
+         begin
+            TThread.Synchronize(TThread.CurrentThread, procedure
+            begin
+               AddEntrega(FieldByName('id_remessa').AsInteger,
+                          FieldByName('descricao').AsString,
+                          FieldByName('origem').AsString,
+                          FieldByName('destino').AsString,
+                          FieldByName('valor').AsFloat);
+            end);
+            Next;
+         end;
+      end;
    end);
 
    t.OnTerminate := ThreadEntregasTerminate;
@@ -309,18 +360,27 @@ begin
    var
       i : Integer;
    begin
-      //Acessar a API em busca das remessas...
-      sleep(2500);
+      DmRemessa.ListarHistorico(TSession.ID_USUARIO);
 
       //Buscar entregas no servidor
-
-      TThread.Synchronize(TThread.CurrentThread, procedure
+      with DmRemessa.TabRemessas do
       begin
-         AddHistorico(0,1,'P','10/05/2022 08:15','Entrega da Contabilidade',
-                      'Rua Indiana, 482','Av. Interlagos, 6541', 55);
-         AddHistorico(0,1,'F','10/05/2022 08:15','Entrega de Projetos',
-                      'Av. 23 de maio, 5411','Rua Sabiá, 258', 21);
-      end);
+         while not Eof do
+         begin
+            TThread.Synchronize(TThread.CurrentThread, procedure
+            begin
+               AddHistorico(FieldByName('id_remessa').AsInteger,
+                            FieldByName('id_usuario').AsInteger,
+                            FieldByName('status').AsString,
+                            UTCtoDateBR(FieldByName('dt_cadastro').AsString),
+                            FieldByName('descricao').AsString,
+                            FieldByName('origem').AsString,
+                            FieldByName('destino').AsString,
+                            FieldByName('valor').AsFloat);
+            end);
+            Next;
+         end;
+      end;
    end);
 
    t.OnTerminate := ThreadHistoricoTerminate;
@@ -359,6 +419,11 @@ end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);
 begin
+  // Dados do Login...
+  TSession.ID_USUARIO := 3;
+  TSession.NOME       := 'Giovandro';
+  TSession.EMAIL      := 'giovandrofabiosantos@hotmail.com';
+  //----------------------
   ListarMinhasRemessas;
 end;
 
@@ -372,7 +437,19 @@ begin
    if not Assigned(FrmNovaRemessa) then
       Application.CreateForm(TFrmNovaRemessa, FrmNovaRemessa);
 
+   FrmNovaRemessa.Id_Remessa     := 0;
+   FrmNovaRemessa.ExecuteOnClose := ListarMinhasRemessas;
    FrmNovaRemessa.Show;
+end;
+
+procedure TFrmPrincipal.imgRefreshEntregaClick(Sender: TObject);
+begin
+   ListarEntregasDisponiveis;
+end;
+
+procedure TFrmPrincipal.imgRefreshHistoricoClick(Sender: TObject);
+begin
+   ListarHistorico;
 end;
 
 end.
